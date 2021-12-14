@@ -32,5 +32,5 @@ class FileLineCounter:
 
 
 if __name__ == '__main__':
-    dirPath = "E:/Documents/Courses/DOSP/Projs/Proj03/ChordP2PSystemSimulator"
+    dirPath = "E:/Documents/Courses/DOSP/Projs/Proj04/PartOne/TweetSimulator01/TweetSimulator01"
     print("total: " + str(FileLineCounter.count(dirPath)))
