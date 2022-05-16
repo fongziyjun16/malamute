@@ -4,7 +4,9 @@
 
 This is a simple application based on Role Base Access Control (RBAC) and integrated with Spring Boot + Spring Security.
 
-## Data Schema
+## Data 
+
+### MySQL
 
 MySQL is chosen to store the data of users, roles and authorities.
 
@@ -37,6 +39,10 @@ erDiagram
 	}
 	
 ```
+
+### Redis
+
+Redis is chosen to store use information like authorities after login
 
 ## Run
 
