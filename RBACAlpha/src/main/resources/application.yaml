@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.106.132:3306/rbacalpha?createDatabaseIfNotExist=true&serverTimezone=UTC
+    username: root
+    password: IBLMySQL8!
+
+  jpa:
+    database: mysql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.MySQL8Dialect
+
+  redis:
+    host: 192.168.106.132
+    port: 6379
+    password: IBLRedis6!
+    database: 0
+
+jwt:
+  secret: InfoBoardLite
