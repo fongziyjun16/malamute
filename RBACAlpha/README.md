@@ -2,7 +2,7 @@
 
 ## Description
 
-This is a simple application based on Role Base Access Control (RBAC) and integrated with Spring Boot + Spring Security.
+This is a simple application based on Role Base Access Control (RBAC) and integrated with Spring Boot + Spring Security + JWT.
 
 ## Data 
 
