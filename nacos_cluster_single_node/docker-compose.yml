@@ -1,0 +1,71 @@
+version: "3"
+
+services:
+  mysql:
+    image: mysql:5.7.38
+    container_name: mysql_nacos
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/conf:/etc/mysql/conf.d
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    env_file:
+      - ./mysql/mysql_info.env
+
+  nacos1:
+    hostname: nacos1
+    image: nacos/nacos-server:latest
+    container_name: nacos1
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+      - "9555:9555"
+    # volumes:
+    #   - ./nacos/logs/nacos1:/home/nacos/logs
+    env_file:
+      - ./nacos/nacos_cluster_info.env
+    restart: always
+    depends_on:
+      - mysql
+
+  nacos2:
+    hostname: nacos2
+    image: nacos/nacos-server:latest
+    container_name: nacos2
+    ports:
+      - "8849:8848"
+      - "9849:9848"
+    # volumes:
+    #   - ./nacos/logs/nacos2:/home/nacos/logs
+    env_file:
+      - ./nacos/nacos_cluster_info.env
+    restart: always
+    depends_on:
+      - mysql
+
+  nacos3:
+    hostname: nacos2
+    image: nacos/nacos-server:latest
+    container_name: nacos3
+    ports:
+      - "8850:8848"
+      - "9850:9848"
+    # volumes:
+    #   - ./nacos/logs/nacos3:/home/nacos/logs
+    env_file:
+      - ./nacos/nacos_cluster_info.env
+    depends_on:
+      - mysql
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_nacos
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - nacos1
+      - nacos2
+      - nacos3
+
